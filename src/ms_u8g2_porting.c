@@ -60,7 +60,7 @@ uint8_t ms_u8x8_byte_hw_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *ar
            msg.buf   = data;
 
            (void)ms_io_write(fd, &msg, sizeof(msg));
-       }
+        }
         break;
 
     default:
