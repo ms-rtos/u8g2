@@ -47,7 +47,7 @@ include $(MKTEMP)/header.mk
 # Include targets makefiles
 #*********************************************************************************************************
 include libu8g2.mk
-include ms_u8g2_example.mk
+include u8g2_example.mk
 
 #*********************************************************************************************************
 # Include end.mk
