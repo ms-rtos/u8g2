@@ -1,7 +1,7 @@
 
 ## u8g2
 
-U8g2: Library for monochrome displays, version 2.
+U8g2 is a monochrome graphics library for embedded devices.
 
 License: new-bsd license (two-clause bsd license). 
 
