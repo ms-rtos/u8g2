@@ -13,17 +13,17 @@
 #include <ms_rtos.h>
 #include "u8x8.h"
 
-static const char *g_i2c_dev = "/dev/i2c0";
-static ms_uint16_t g_i2c_addr = 0;
+static const char *ms_u8g2_i2c_dev = "/dev/i2c0";
+static ms_uint16_t ms_u8g2_i2c_addr = 0;
 
 void ms_u8x8_i2c_dev_set(const char *i2c_dev)
 {
-    g_i2c_dev = i2c_dev;
+    ms_u8g2_i2c_dev = i2c_dev;
 }
 
 void ms_u8x8_i2c_address_set(ms_uint16_t i2c_addr)
 {
-    g_i2c_addr = i2c_addr;
+    ms_u8g2_i2c_addr = i2c_addr;
 }
 
 uint8_t ms_u8x8_byte_hw_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
@@ -39,7 +39,7 @@ uint8_t ms_u8x8_byte_hw_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *ar
 
     case U8X8_MSG_BYTE_INIT:
         if (fd < 0) {
-            fd = ms_io_open(g_i2c_dev, O_RDWR, 0666);
+            fd = ms_io_open(ms_u8g2_i2c_dev, O_RDWR, 0666);
             ms_fifo_init(&fifo, data, sizeof(data));
         }
         break;
@@ -54,7 +54,7 @@ uint8_t ms_u8x8_byte_hw_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *ar
     case U8X8_MSG_BYTE_END_TRANSFER: {
            ms_i2c_msg_t msg;
 
-           msg.addr  = (g_i2c_addr != 0) ? g_i2c_addr : u8x8_GetI2CAddress(u8x8);
+           msg.addr  = (ms_u8g2_i2c_addr != 0) ? ms_u8g2_i2c_addr : u8x8_GetI2CAddress(u8x8);
            msg.flags = 0;
            msg.len   = ms_fifo_len(&fifo);
            msg.buf   = data;
