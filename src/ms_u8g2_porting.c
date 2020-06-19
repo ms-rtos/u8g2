@@ -29,8 +29,8 @@ void ms_u8x8_i2c_address_set(ms_uint16_t i2c_addr)
 uint8_t ms_u8x8_byte_hw_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
 {
     static int fd = -1;
-    static ms_uint8_t data[32];
-    static ms_fifo_t fifo;
+    static ms_uint8_t fifo_buf[32];
+    static ms_fifo_t  fifo;
 
     switch (msg) {
     case U8X8_MSG_BYTE_SEND:
@@ -40,7 +40,7 @@ uint8_t ms_u8x8_byte_hw_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *ar
     case U8X8_MSG_BYTE_INIT:
         if (fd < 0) {
             fd = ms_io_open(ms_u8g2_i2c_dev, O_RDWR, 0666);
-            ms_fifo_init(&fifo, data, sizeof(data));
+            ms_fifo_init(&fifo, fifo_buf, sizeof(fifo_buf));
         }
         break;
 
@@ -57,7 +57,7 @@ uint8_t ms_u8x8_byte_hw_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *ar
            msg.addr  = (ms_u8g2_i2c_addr != 0) ? ms_u8g2_i2c_addr : u8x8_GetI2CAddress(u8x8);
            msg.flags = 0;
            msg.len   = ms_fifo_len(&fifo);
-           msg.buf   = data;
+           msg.buf   = fifo_buf;
 
            (void)ms_io_write(fd, &msg, sizeof(msg));
         }
