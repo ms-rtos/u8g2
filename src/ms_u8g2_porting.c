@@ -6,7 +6,7 @@
  *
  * File: ms_u8g2_porting.c u8g2 porting.
  *
- * Author: Jiao.jinxing <jiaojixing@acoinfo.com>
+ * Author: Jiao.jinxing <jiaojinxing@acoinfo.com>
  *
  */
 

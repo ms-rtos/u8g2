@@ -6,7 +6,7 @@
  *
  * File: ms_u8g2_example.c u8g2 example.
  *
- * Author: Jiao.jinxing <jiaojixing@acoinfo.com>
+ * Author: Jiao.jinxing <jiaojinxing@acoinfo.com>
  *
  */
 
