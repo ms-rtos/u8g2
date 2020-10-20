@@ -17,7 +17,7 @@
 extern "C" {
 #endif
 
-ms_uint8_t ms_u8x8_byte_hw_i2c(ms_uint8_t *u8x8, ms_uint8_t msg, ms_uint8_t arg_int, ms_ptr_t arg_ptr);
+ms_uint8_t ms_u8x8_byte_hw_i2c(u8x8_t *u8x8, ms_uint8_t msg, ms_uint8_t arg_int, ms_ptr_t arg_ptr);
 ms_uint8_t ms_u8x8_gpio_and_delay_hw_i2c(u8x8_t *u8x8, ms_uint8_t msg, ms_uint8_t arg_int, ms_ptr_t arg_ptr);
 void       ms_u8x8_i2c_dev_set(const char *i2c_dev);
 void       ms_u8x8_i2c_address_set(ms_uint16_t i2c_addr);
